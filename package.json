@@ -8,7 +8,9 @@
     "@testing-library/user-event": "^13.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1",
+    "react-icons": "^4.7.1",
+    "react-router-dom": "^6.7.0",
+    "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -39,15 +41,15 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JoeDaBu/Flash.git"
+    "url": "git+https://github.com/JoeDaBu/flash.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JoeDaBu/Flash/issues"
+    "url": "https://github.com/JoeDaBu/flash/issues"
   },
-  "homepage": "https://github.com/JoeDaBu/Flash#readme",
+  "homepage": "https://github.com/JoeDaBu/flash#readme",
   "devDependencies": {
     "prisma": "^4.9.0"
   }
