@@ -1,6 +1,10 @@
 import React from 'react';
-import { BsCalculator } from 'react-icons/bs';
+import { subjectBadges, renderSubjectIcon } from '../utils';
 
 export const Badge = (subject) => {
-  return <div className="">{subject ? 'MATH' : <BsCalculator />}</div>;
+  return (
+    <div className="rounded-full bg-primary-200 w-min p-2">
+      {renderSubjectIcon(subject)}
+    </div>
+  );
 };
