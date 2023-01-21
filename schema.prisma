@@ -1,0 +1,51 @@
+model Student {
+    user_name    String @unique
+    first_name   String
+    last_name    String
+    email        String @unique
+    password     String
+    phone_number Int? // optional
+}
+
+model Tutor {
+    user_name         String         @unique
+    first_name        String
+    last_name         String
+    email             String         @unique
+    password          String
+    preference        Course[]
+    year_level        Int
+    completed_courses Course[]
+    gpa               Float? // optional
+    preferred_meetup  String? // optional
+    rate              Float
+    course_badges     CourseBadges[]
+}
+
+model Course {
+    tutor         Tutor     @relation(fields: [course_id], references: [user_name])
+    course_id     Int       @unique
+    department    String    @unique
+    course_number Int
+    Listing       Listing[]
+}
+
+model CourseBadges {
+    subject            String  @unique
+    verified_by_grades Int // should this be integer? 
+    Tutor              Tutor?  @relation(fields: [tutorUser_name], references: [user_name])
+    tutorUser_name     String?
+}
+
+model Listing {
+    listing_id         Int    @unique // newly added field to identify listings
+    title              String
+    course             Course @relation(fields: [courseCourse_id], references: [course_id])
+    description        String
+    //price_range           String
+    lowest_price       Int
+    highest_price      Int
+    preferred_location String
+    preferred_time     String // unless there's a better way to capture time
+    courseCourse_id    Int
+}
