@@ -35,14 +35,14 @@ model Tutor {
 }
 
 model Course {
-  tutorPref         Tutor?     @relation(fields: [tutorPref_name], references: [user_name], name: "preferences")
-  tutorCom          Tutor?     @relation(fields: [tutorCom_name], references: [user_name], name: "completed_courses")
-  course_id         Int       @unique
-  department        String    @unique
-  course_number     Int
-  Listing           Listing[]
-  tutorPref_name    String
-  tutorCom_name     String
+  tutorPref      Tutor?    @relation(fields: [tutorPref_name], references: [user_name], name: "preferences")
+  tutorCom       Tutor?    @relation(fields: [tutorCom_name], references: [user_name], name: "completed_courses")
+  course_id      Int       @unique
+  department     String    @unique
+  course_number  Int
+  Listing        Listing[]
+  tutorPref_name String
+  tutorCom_name  String
 }
 
 model CourseBadges {
@@ -53,9 +53,9 @@ model CourseBadges {
 }
 
 model Listing {
-  listing_id         Int    @unique // newly added field to identify listings
+  listing_id         Int     @unique // newly added field to identify listings
   title              String
-  course             Course @relation(fields: [courseCourse_id], references: [course_id])
+  course             Course  @relation(fields: [courseCourse_id], references: [course_id])
   description        String
   //price_range           String
   lowest_price       Int
@@ -63,4 +63,5 @@ model Listing {
   preferred_location String
   preferred_time     String // unless there's a better way to capture time
   courseCourse_id    Int
+  fast               Boolean // indicate if it's fast or regular listing
 }
