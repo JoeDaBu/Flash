@@ -33,15 +33,17 @@ model Tutor {
   preferred_meetup  String? // optional
   rate              Float
   course_badge      CourseBadge[]
+  phone_number      Int?
 }
 
 model Course {
   tutorPref      Tutor?    @relation(fields: [tutorPref_name], references: [user_name], name: "preferences")
   tutorCom       Tutor?    @relation(fields: [tutorCom_name], references: [user_name], name: "completed_courses")
   course_id      Int       @unique
-  department     String    @unique
+  department     String    
   course_number  Int
-  Listing        Listing[]
+  listing        Listing @relation(fields: [listing_id], references: [id])
+  listing_id     Int
   tutorPref_name String
   tutorCom_name  String
 }
@@ -54,9 +56,9 @@ model CourseBadge {
 }
 
 model Listing {
-  listing_id         Int    @unique // newly added field to identify listings
+  id                 Int    @unique // newly added field to identify listings
   title              String
-  course             Course @relation(fields: [courseCourse_id], references: [course_id])
+  course             Course[]
   description        String
   //price_range           String
   lowest_price       Int
