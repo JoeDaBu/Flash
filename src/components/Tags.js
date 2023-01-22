@@ -1,15 +1,15 @@
-import React from 'react'
-import { renderIcon } from '../utils'
+import React from 'react';
+import { renderIcon } from '../utils';
 
 export const Tags = ({ isCourse, label }) => {
     const parseIcons = () => {
         if (isCourse) {
-            const course = label.split(' ')[0]
-            return renderIcon(true, course)
+            const course = label.split(' ')[0];
+            return renderIcon(true, course);
         } else {
-            return renderIcon(false, label)
+            return renderIcon(false, label);
         }
-    }
+    };
 
     return (
         <div>
@@ -22,5 +22,5 @@ export const Tags = ({ isCourse, label }) => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
