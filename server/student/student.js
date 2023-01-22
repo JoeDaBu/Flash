@@ -1,5 +1,4 @@
 import express from 'express';
-import { getUser } from '../user.js';
 import { PrismaInstance } from '../utils/prisma.js';
 
 const prismaInstance = new PrismaInstance();
@@ -35,15 +34,8 @@ router.put('/student', async (req, res) => {
 })
 
 router.post('/student', async (req, res) => {
-    // const response = createUserValidator.safeParse({
-    //     ...req.body
-    // })
 
-    // if (!response.success) {
-    //     return res.status(400).send(response.error);
-    // }
-
-    const newStudent = await client.Student.create({
+    const newStudent = await client.student.create({
         data: {
             ...req.body
         }

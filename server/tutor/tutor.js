@@ -1,5 +1,4 @@
 import express from 'express';
-import { getUser } from '../user.js';
 import { PrismaInstance } from '../utils/prisma.js';       
 
 const prismaInstance = new PrismaInstance();
@@ -10,11 +9,10 @@ const client = prismaInstance.getInstance();
 const router = express.Router();
 
 router.get('/tutor', async (req, res) => {
-    const data = getUser(req);
 
     const tutor = await client.tutor.findUniqueOrThrow({
         where: {
-            user_name: data.user_name
+            user_name: req.body.user_name
         }
     })
 
@@ -22,12 +20,12 @@ router.get('/tutor', async (req, res) => {
 })
 
 router.put('/tutor', async (req, res) => {
-    const user = getUser(req);
-    //const data = req.body;
-
-    const tutor = await client.user.update({
+    const tutor = await client.tutor.update({
         where: {
-            user_name: user.user_name
+            user_name: req.body.user_name
+        },
+        data: {
+            ...req.body
         }
     })
 
@@ -35,17 +33,10 @@ router.put('/tutor', async (req, res) => {
 })
 
 router.post('/tutor', async (req, res) => {
-    // const response = createUserValidator.safeParse({
-    //     ...req.body
-    // })
 
-    // if (!response.success) {
-    //     return res.status(400).send(response.error);
-    // }
-
-    const newTutor = await client.Tutor.create({
+    const newTutor = await client.tutor.create({
         data: {
-            ...data
+            ...req.body
         }
     })
 

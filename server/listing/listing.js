@@ -10,11 +10,10 @@ const client = prismaInstance.getInstance();
 const router = express.Router();
 
 router.get('/listing', async (req, res) => {
-    const data = getListing(req);
 
     const listing = await client.listing.findUniqueOrThrow({
         where: {
-            listing_id: data.listing_id
+            listing_id: req.body.listing_id
         }
     })
 
@@ -22,34 +21,29 @@ router.get('/listing', async (req, res) => {
 })
 
 router.put('/listing', async (req, res) => {
-    const user = getListing(req);
     //const data = req.body;
 
     const listing = await client.listing.upate({
         where: {
-            listing_id: user.listing_id
+            listing_id: req.body.listing_id
+        },
+        data: {
+            ...req.body
         }
     })
 
     return res.send(listing);
 })
 
-// router.post('/listing', async (req, res) => {
-//     const response = createUserValidator.safeParse({
-//         ...req.body
-//     })
+router.post('/listing', async (req, res) => {
 
-//     if (!response.success) {
-//         return res.status(400).send(response.error);
-//     }
+    const newListing = await client.listing.create({
+        data: {
+            ...req.body
+        }
+    })
 
-//     const newListing = await client.listing.create({
-//         data: {
-//             ...data
-//         }
-//     })
-
-//     return res.send(newListing);
-// })
+    return res.send(newListing);
+})
 
 export default router;
