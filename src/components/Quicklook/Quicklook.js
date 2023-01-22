@@ -28,7 +28,7 @@ export const Quicklook = () => {
                 <div className="flex flex-col gap-1">
                     <div className="flex justify-between items-center">
                         <p className="font-extrabold">Public Details</p>
-                        <p className="text-info-600">edit</p>
+                        <p className="text-info-600 text-xs">edit</p>
                     </div>
                     <div className="text-xs">
                         <p>Preferred Contact Information:</p>

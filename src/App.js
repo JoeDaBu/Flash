@@ -3,16 +3,20 @@ import { Navbar } from './components/Navbar';
 import { Route, Routes } from 'react-router-dom';
 import { Dashboard } from './pages/Dashboard';
 import { Profile } from './pages/Profile';
+import { Footer } from './components/Footer';
 
 const App = () => {
     return (
-        <div className="mx-10">
-            <Navbar />
-            <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/profile" element={<Profile />} />
-            </Routes>
-        </div>
+        <>
+            <div className="mx-10">
+                <Navbar />
+                <Routes>
+                    <Route path="/" element={<Dashboard />} />
+                    <Route path="/profile" element={<Profile />} />
+                </Routes>
+            </div>
+            <Footer />
+        </>
     );
 };
 

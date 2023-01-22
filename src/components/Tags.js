@@ -14,10 +14,8 @@ export const Tags = ({ isCourse, label }) => {
     return (
         <div>
             <div className="flex items-center justify-center bg-primary-700 w-max rounded-full">
-                <div className="mx-2 my-1 inline-flex">
-                    <div className="mr-2 text-sm text-white">
-                        {parseIcons()}
-                    </div>
+                <div className="mx-2 my-1 flex gap-1 justify-center items-center ">
+                    <div className="text-sm text-white">{parseIcons()}</div>
                     <p className="font-bold text-white text-xs">{label}</p>
                 </div>
             </div>

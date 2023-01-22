@@ -5,7 +5,7 @@ import { ProfileIcon } from './ProfileIcon';
 
 export const Navbar = () => {
     return (
-        <div className="flex items-center justify-between my-5">
+        <div className="flex items-center justify-between mt-8 mb-12">
             <Link to="/">
                 <img className="w-12 h-auto" src={Logo} alt="Logo" />
             </Link>

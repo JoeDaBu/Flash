@@ -14,7 +14,7 @@ export const Cell = () => {
                     <Tags isCourse={true} label="MATH 103" />
                     <Tags isCourse={false} label="$24/hr" />
                     <Tags isCourse={false} label="ASAP" />
-                    <Tags isCourse={false} label="FORESTRY" />
+                    <Tags isCourse={false} label="IKB" />
                 </div>
                 <div className="mx-5 text-primary-900">
                     <p>
