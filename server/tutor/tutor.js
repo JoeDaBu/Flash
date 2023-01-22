@@ -22,12 +22,12 @@ router.get('/tutor', async (req, res) => {
 })
 
 router.put('/tutor', async (req, res) => {
-    const userSession = getUser(req);
+    const user = getUser(req);
     //const data = req.body;
 
-    const tutor = await client.user.upate({
+    const tutor = await client.user.update({
         where: {
-            user_name: userSession.user_name
+            user_name: user.user_name
         }
     })
 
