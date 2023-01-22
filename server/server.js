@@ -1,6 +1,9 @@
 import express from 'express';
 import session from 'express-session';
 import cors from 'cors';
+import listingRoute from './listing/listing'
+import studentRoute from './student/student'
+import tutorRoute from './tutor/tutor'
 
 const app = express();
 const PORT = 1234;
@@ -26,6 +29,8 @@ app.use((req, res, next) => {
     next();
 })
 
-//app.use()
+app.use(listingRoute)
+app.use(studentRoute)
+app.use(tutorRoute)
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));

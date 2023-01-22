@@ -22,11 +22,11 @@ router.get('/student', async (req, res) => {
 })
 
 router.put('/student', async (req, res) => {
-    const userSession = getUser(req);
+    const user = getUser(req);
 
     const student = await client.user.update({
         where: {
-            user_name: serSession.user_name
+            user_name: user.user_name
         }
     })
 

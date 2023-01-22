@@ -1,4 +1,5 @@
 import { courseTypeVal } from "../course/validate"
+import { ValidationError } from "../errors"
 
 export const ListingProps = {
     listing_id: 'listing_id',
@@ -18,19 +19,19 @@ export function listingTypeVal(listing) {
     if (!(typeof(listing.title) === String)) {
         return ValidationError("Incorrect title type")
     }
-    if (!(typeof(tutor.description) === String)) {
+    if (!(typeof(listing.description) === String)) {
         return ValidationError("Incorrect description type")
     }
-    if (!(typeof(tutor.lowest_price) === Number)) {
+    if (!(typeof(listing.lowest_price) === Number)) {
         return ValidationError("Incorrect lowest_price Type")
     }
-    if (!(typeof(tutor.highest_price) === Number)) {
+    if (!(typeof(listing.highest_price) === Number)) {
         return ValidationError("Incorrect highest_price Type")
     }
-    if (!(typeof(tutor.preferred_location) === String)) {
+    if (!(typeof(listing.preferred_location) === String)) {
         return ValidationError("Incorrect preferred_location Type")
     }
-    if (!(typeof(tutor.preferred_time) === String)) {
+    if (!(typeof(listing.preferred_time) === String)) {
         return ValidationError("Incorrect preferred_time Type")
     }
 

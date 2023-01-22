@@ -22,12 +22,12 @@ router.get('/listing', async (req, res) => {
 })
 
 router.put('/listing', async (req, res) => {
-    const userSession = getListing(req);
+    const user = getListing(req);
     //const data = req.body;
 
     const listing = await client.listing.upate({
         where: {
-            listing_id: userSession.listing_id
+            listing_id: user.listing_id
         }
     })
 
