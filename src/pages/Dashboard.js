@@ -1,11 +1,11 @@
 import React from 'react';
 import { Quicklook } from '../components/Quicklook/Quicklook';
-import { Tags } from '../components/Tags';
+import { Cell } from '../components/Cell';
 
 export const Dashboard = () => {
   return (
-    <div>
-      <Tags />
+    <div className="flex gap-7">
+      <Cell />
       <Quicklook />
     </div>
   );

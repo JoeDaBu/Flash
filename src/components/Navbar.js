@@ -16,7 +16,9 @@ export const Navbar = () => {
         <Link to="/messages">
           <p>Message</p>
         </Link>
-        <ProfileIcon />
+        <Link to="/profile">
+            <ProfileIcon />
+        </Link>
       </div>
     </div>
   );
