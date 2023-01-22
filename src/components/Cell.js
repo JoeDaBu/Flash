@@ -1,26 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Tags } from '../components/Tags';
 import { useModalStore } from '../utils';
 import { Modal } from './Modal';
 
 export const Cell = () => {
-  // const [showModal, setShowModal] = useState(true);
   const modalState = useModalStore((state) => state.showModal);
   const changeState = useModalStore((state) => state.toggleModal);
 
-  const openModal = () => {
-    changeState();
-    console.log(modalState);
-  };
   return (
     <>
       {modalState ? <Modal /> : null}
-      <div onClick={openModal}>
-        <div className="flex-col bg-primary-100 w-full rounded-xl pb-5">
+      <div onClick={changeState}>
+        <div className="flex-col bg-primary-100 w-full rounded-xl pb-5 hover:scale-[1.01] transition-all cursor-pointer">
           <div className="m-5 mb-3 inline-flex text-primary-900">
-            <p>
-              <b>Help with integrals</b>
-            </p>
+            <p className="font-bold">Help with integrals</p>
           </div>
           <div className="my-5 mb-3 inline-flex gap-3">
             <Tags isCourse={true} label="MATH 103" />
