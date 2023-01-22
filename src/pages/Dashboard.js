@@ -7,8 +7,8 @@ export const Dashboard = () => {
         <div className="flex flex-col">
             <div className="flex gap-7">
                 <div className="flex flex-col gap-7">
-                    <Listing fast={false} />
                     <Listing fast={true} />
+                    <Listing fast={false} />
                 </div>
                 <Quicklook />
             </div>

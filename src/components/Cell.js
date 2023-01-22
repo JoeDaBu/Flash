@@ -2,8 +2,9 @@ import React from 'react';
 import { Tags } from '../components/Tags';
 import { useModalStore } from '../utils';
 import { Modal } from './Modal';
+import { FastIcon } from '../components/FastIcon.js';
 
-export const Cell = () => {
+export const Cell = (fast) => {
   const modalState = useModalStore((state) => state.showModal);
   const changeState = useModalStore((state) => state.toggleModal);
 
@@ -16,6 +17,7 @@ export const Cell = () => {
             <p className="font-bold">Help with integrals</p>
           </div>
           <div className="my-5 mb-3 inline-flex gap-3">
+            {fast['fast'] ? <FastIcon /> : null}
             <Tags isCourse={true} label="MATH 103" />
             <Tags isCourse={false} label="$24/hr" />
             <Tags isCourse={false} label="ASAP" />
