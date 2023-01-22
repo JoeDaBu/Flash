@@ -1,4 +1,6 @@
 import express from 'express';
+import { getUser } from '../user';
+import { PrismaInstance } from '../utils/prisma';       
 
 const prismaInstance = new PrismaInstance();
 prismaInstance.createInstance();
@@ -8,7 +10,7 @@ const client = prismaInstance.getInstance();
 const router = express.Router();
 
 router.get('/tutor', async (req, res) => {
-    const data = getSession(req);
+    const data = getUser(req);
 
     const tutor = await client.tutor.findUniqueOrThrow({
         where: {
@@ -20,7 +22,7 @@ router.get('/tutor', async (req, res) => {
 })
 
 router.put('/tutor', async (req, res) => {
-    const userSession = getSession(req);
+    const userSession = getUser(req);
     //const data = req.body;
 
     const tutor = await client.user.upate({
