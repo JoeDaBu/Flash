@@ -1,5 +1,5 @@
-import React from 'react'
-import { Tags } from '../components/Tags'
+import React from 'react';
+import { Tags } from '../components/Tags';
 
 export const Cell = () => {
     return (
@@ -33,5 +33,5 @@ export const Cell = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
