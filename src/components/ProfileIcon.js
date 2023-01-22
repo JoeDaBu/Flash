@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export const ProfileIcon = () => {
   return (
@@ -6,6 +6,5 @@ export const ProfileIcon = () => {
         <div className='flex items-center justify-center bg-primary-500 rounded-full w-16 h-16 shadow-lg shadow-primary-500/20'>
             <p className='font-bold text-white text-xl'>JD</p>
         </div>
-    </div>
-  )
-}
+    );
+};
