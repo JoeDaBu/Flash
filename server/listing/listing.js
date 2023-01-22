@@ -34,7 +34,7 @@ router.put('/listing', async (req, res) => {
     return res.send(listing);
 })
 
-// router.post('/create_listing', async (req, res) => {
+// router.post('/listing', async (req, res) => {
 //     const response = createUserValidator.safeParse({
 //         ...req.body
 //     })

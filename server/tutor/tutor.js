@@ -34,16 +34,16 @@ router.put('/tutor', async (req, res) => {
     return res.send(tutor);
 })
 
-router.post('/create_tutor', async (req, res) => {
-    const response = createUserValidator.safeParse({
-        ...req.body
-    })
+router.post('/tutor', async (req, res) => {
+    // const response = createUserValidator.safeParse({
+    //     ...req.body
+    // })
 
-    if (!response.success) {
-        return res.status(400).send(response.error);
-    }
+    // if (!response.success) {
+    //     return res.status(400).send(response.error);
+    // }
 
-    const newTutor = await client.user.create({
+    const newTutor = await client.Tutor.create({
         data: {
             ...data
         }

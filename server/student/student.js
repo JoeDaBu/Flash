@@ -10,11 +10,10 @@ const client = prismaInstance.getInstance();
 const router = express.Router();
 
 router.get('/student', async (req, res) => {
-    const data = getUser(req);
 
     const student = await client.student.findUniqueOrThrow({
         where: {
-            user_name: data.user_name
+            user_name: req.body.user_name
         }
     })
 
@@ -22,29 +21,31 @@ router.get('/student', async (req, res) => {
 })
 
 router.put('/student', async (req, res) => {
-    const user = getUser(req);
 
-    const student = await client.user.update({
+    const student = await client.student.update({
         where: {
-            user_name: user.user_name
+            user_name: req.body.user_name
+        },
+        data: {
+            ...req.body
         }
     })
 
     return res.send(student);
 })
 
-router.post('create_student', async (req, res) => {
-    const response = createUserValidator.safeParse({
-        ...req.body
-    })
+router.post('/student', async (req, res) => {
+    // const response = createUserValidator.safeParse({
+    //     ...req.body
+    // })
 
-    if (!response.success) {
-        return res.status(400).send(response.error);
-    }
+    // if (!response.success) {
+    //     return res.status(400).send(response.error);
+    // }
 
-    const newStudent = await client.user.create({
+    const newStudent = await client.Student.create({
         data: {
-            ...data
+            ...req.body
         }
     })
 
