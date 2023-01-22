@@ -7,10 +7,9 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./flash.db"
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
 }
-
 model Student {
   user_name    String @unique
   first_name   String
