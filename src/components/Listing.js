@@ -31,29 +31,31 @@ export const Listing = (fast) => {
   }, []);
 
   let fastListings = [];
+  let regularListings = [];
 
-  const sortFastListings = async () => {
-    console.log(response);
-    for (let i = 0; await response.length; i++) {
+  const sortListings = async () => {
+    for (let i = 0; i < response.length; i++) {
       if (response[i].fast === true) {
         fastListings.push(response[i]);
+      } else if (response[i].fast === false) {
+        regularListings.push(response[i]);
       }
     }
   };
 
-  sortFastListings();
-
-  let renderListings = [];
+  sortListings();
 
   const renderFastListings = () => {
-    for (let i = 0; fastListings.length; i++) {
-      renderListings.push(<Cell data={fastListings[i]} />);
-    }
+    return fastListings.map((obj) => {
+      return <Cell data={obj} />;
+    });
   };
 
-  renderFastListings();
-
-  console.log(renderListings);
+  const renderRegularListings = () => {
+    return regularListings.map((obj) => {
+      return <Cell data={obj} />;
+    });
+  };
 
   if (fast['fast']) {
     return (
@@ -65,9 +67,7 @@ export const Listing = (fast) => {
           <b>Job Listings</b>
         </p>
         <div className="flex flex-col mb-5 mx-5 gap-4">
-          <Cell />
-          <Cell />
-          <Cell />
+          {regularListings.length > 0 ? renderRegularListings() : null}
         </div>
       </div>
     );
@@ -81,7 +81,7 @@ export const Listing = (fast) => {
           <b>Fast Listings</b>
         </p>
         <div className="flex flex-col mb-5 mx-5 gap-4">
-          {renderListings.length > 0 ? renderListings : null}
+          {fastListings.length > 0 ? renderFastListings() : null}
         </div>
       </div>
     );
