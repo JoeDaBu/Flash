@@ -1,35 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useModalStore } from '../utils';
 import { Tags } from '../components/Tags';
 
-export const Modal = () => {
-  const [response, setResponse] = useState([]);
-  const [loading, setLoading] = useState(true);
+export const Modal = (data) => {
   const changeState = useModalStore((state) => state.toggleModal);
-
-  const getData = async () => {
-    try {
-      const response = await fetch('http://localhost:1234/listing', {
-        method: 'GET',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-      });
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        setResponse(data);
-        setLoading(false);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
 
   const exitModal = () => {
     changeState();
@@ -37,32 +11,29 @@ export const Modal = () => {
 
   return (
     <>
-      {!loading ? (
-        <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
-          <div className="z-50 bg-white w-2/3 h-2/3 rounded-xl p-10 flex flex-col justify-between">
+      {data ? (
+        <div className="justify-center items-center flex fixed inset-0 z-50">
+          <div className="z-50 bg-white w-2/3 rounded-xl p-10 flex flex-col gap-10 justify-between">
             <div className="flex flex-col gap-2">
               <p className="text-2xl font-bold text-primary-900">
-                {response ? response[0].title : 'loading'}
+                {data.data.data.title}
               </p>
               <div className="flex gap-2">
-                <Tags isCourse={true} label="MATH 103" />
-                <Tags isCourse={false} label="$24/hr" />
-                <Tags isCourse={false} label="ASAP" />
-                <Tags isCourse={false} label="IKB" />
+              {data.data.fast ? <FastIcon /> : null}
+                {/* <Tags isCourse={true} label="MATH 103" /> */}
+                <Tags
+                  isCourse={false}
+                  label={`$${data.data.data.lowest_price}/hr`}
+                />
+                <Tags isCourse={false} label={data.data.data.preferred_time} />
+                <Tags
+                  isCourse={false}
+                  label={data.data.data.preferred_location}
+                />
               </div>
               <p className="font-bold text-primary-900">Student: Brad Smith</p>
               <div className="text-primary-900">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  at lectus hendrerit, sagittis diam vel, elementum magna. Donec
-                  rutrum enim rhoncus tincidunt vehicula. Nam interdum placerat
-                  tellus. Proin id leo vel tellus dignissim ullamcorper vel eget
-                  justo. Suspendisse sodales, urna vitae pharetra volutpat,
-                  libero ligula interdum massa, eu consectetur sapien augue at
-                  diam. Suspendisse potenti. Etiam molestie gravida lorem eget
-                  pulvinar. In at ex condimentum, sollicitudin sem quis, aliquam
-                  tellus. In sed congue odio, vitae blandit sapien.
-                </p>
+                <p>{data.data.data.description}</p>
               </div>
             </div>
             <div className="flex gap-3">
@@ -75,7 +46,7 @@ export const Modal = () => {
             </div>
           </div>
           <div
-            className="w-screen h-screen bg-[#00000035] fixed inset-0 z-40"
+            className="bg-[#00000035] fixed inset-0 z-40"
             onClick={exitModal}
           ></div>
         </div>

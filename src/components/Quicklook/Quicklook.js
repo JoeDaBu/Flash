@@ -21,7 +21,6 @@ export const Quicklook = () => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
         setResponse(data);
       }
     } catch (error) {

@@ -12,9 +12,7 @@ const router = express.Router();
 
 router.get('/listing', async (req, res) => {
   const listing = await client.listing.findMany({
-    // where: {
-    //   listing_id: req.body.listing_id,
-    // },
+    include: { course: true },
   });
 
   return res.send(listing);

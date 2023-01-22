@@ -11,9 +11,11 @@ const router = express.Router();
 router.get('/tutor', async (req, res) => {
   const tutor = await client.tutor.findUniqueOrThrow({
     where: {
-      user_name: 'doeunkwon',
+      user_name: 'aYEETaaa',
     },
+    include: { preference: true, completed_courses: true, course_badge: true },
   });
+  console.log("Student:", tutor.course_badge)
 
   return res.send(tutor);
 });
@@ -27,6 +29,7 @@ router.put('/tutor', async (req, res) => {
       ...req.body,
     },
   });
+  console.log("Student:", tutor)
 
   return res.send(tutor);
 });

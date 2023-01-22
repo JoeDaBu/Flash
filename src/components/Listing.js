@@ -18,7 +18,6 @@ export const Listing = (fast) => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
         setResponse(data);
         setLoading(false);
       }
@@ -31,17 +30,36 @@ export const Listing = (fast) => {
     getData();
   }, []);
 
-  const fastListings = async () => {
-    const data = await response.map((obj) =>
-      obj.filter(Object.values(obj)[7] === true)
-    );
-    console.log(data);
+  let fastListings = [];
+  let regularListings = [];
+
+  const sortListings = async () => {
+    for (let i = 0; i < response.length; i++) {
+      if (response[i].fast === true) {
+        fastListings.push(response[i]);
+      } else if (response[i].fast === false) {
+        regularListings.push(response[i]);
+      }
+    }
   };
 
-  fastListings();
+  sortListings();
+
+  const renderFastListings = () => {
+    return fastListings.map((obj) => {
+      return <Cell data={obj} />;
+    });
+  };
+
+  const renderRegularListings = () => {
+    return regularListings.map((obj) => {
+      return <Cell data={obj} />;
+    });
+  };
 
   if (fast['fast']) {
     return (
+<<<<<<< HEAD
         <div className="flex flex-col bg-gradient-to-b from-primary-500 via-primary-600 to-primary-700 shadow-lg shadow-primary-900/30 w-full h-auto rounded-xl">
           <p className="inline-flex items-center m-5 text-lg text-white gap-3">
             <span className="text-xl">
@@ -53,10 +71,22 @@ export const Listing = (fast) => {
             <Cell fast={fast['fast']}/>
             <Cell fast={fast['fast']}/>
           </div>
+=======
+      <div className="flex flex-col bg-white shadow-lg w-full h-auto rounded-xl">
+        <p className="inline-flex items-center m-5 text-lg text-primary-900 gap-3">
+          <span className="text-xl">
+            <HiOutlineBriefcase />
+          </span>
+          <b>Job Listings</b>
+        </p>
+        <div className="flex flex-col mb-5 mx-5 gap-4">
+          {regularListings.length > 0 ? renderRegularListings() : null}
+>>>>>>> main
         </div>
       );
   } else {
     return (
+<<<<<<< HEAD
         <div className="flex flex-col bg-white shadow-lg w-full h-auto rounded-xl">
           <p className="inline-flex items-center m-5 text-lg text-primary-900 gap-3">
             <span className="text-xl">
@@ -69,6 +99,17 @@ export const Listing = (fast) => {
             <Cell fast={fast['fast']}/>
             <Cell fast={fast['fast']}/>
           </div>
+=======
+      <div className="flex flex-col bg-gradient-to-b from-primary-500 via-primary-600 to-primary-700 shadow-lg shadow-primary-900/30 w-full h-auto rounded-xl">
+        <p className="inline-flex items-center m-5 text-lg text-white gap-3">
+          <span className="text-xl">
+            <BsLightningCharge />
+          </span>
+          <b>Fast Listings</b>
+        </p>
+        <div className="flex flex-col mb-5 mx-5 gap-4">
+          {fastListings.length > 0 ? renderFastListings() : null}
+>>>>>>> main
         </div>
       );
   }
