@@ -33,4 +33,22 @@ router.put('/student', async (req, res) => {
     return res.send(student);
 })
 
+router.post('create_student', async (req, res) => {
+    const response = createUserValidator.safeParse({
+        ...req.body
+    })
+
+    if (!response.success) {
+        return res.status(400).send(response.error);
+    }
+
+    const newStudent = await client.user.create({
+        data: {
+            ...data
+        }
+    })
+
+    return res.send(newStudent);
+})
+
 export default router;
