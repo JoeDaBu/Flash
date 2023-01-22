@@ -9,7 +9,8 @@ export const ListingProps = {
     lowest_price: 'lowest_price',
     highest_price: 'highest_price',
     preferred_location: "preferred_location",
-    preferred_time: 'preferred_time'
+    preferred_time: 'preferred_time',
+    fast: 'fast'
 }
 
 export function listingTypeVal(listing) {
@@ -33,6 +34,9 @@ export function listingTypeVal(listing) {
     }
     if (!(typeof(listing.preferred_time) === String)) {
         return ValidationError("Incorrect preferred_time Type")
+    }
+    if (!(typeof(listing.fast) === Boolean)) {
+        return ValidationError("Incorrect fast Type")
     }
 
     courseTypeVal(listing.course);
