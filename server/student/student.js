@@ -1,6 +1,6 @@
 import express from 'express';
 import { getUser } from '../user';
-import { PrismaInstance } from '../utils/prisma';       
+import { PrismaInstance } from '../utils/prisma';
 
 const prismaInstance = new PrismaInstance();
 prismaInstance.createInstance();
@@ -9,29 +9,28 @@ const client = prismaInstance.getInstance();
 
 const router = express.Router();
 
-router.get('/tutor', async (req, res) => {
+router.get('/student', async (req, res) => {
     const data = getUser(req);
 
-    const tutor = await client.tutor.findUniqueOrThrow({
+    const student = await client.student.findUniqueOrThrow({
         where: {
             user_name: data.user_name
         }
     })
 
-    return res.send(tutor);
+    return res.send(student);
 })
 
-router.put('/tutor', async (req, res) => {
+router.put('/student', async (req, res) => {
     const userSession = getUser(req);
-    //const data = req.body;
 
-    const tutor = await client.user.upate({
+    const student = await client.user.update({
         where: {
-            user_name: userSession.user_name
+            user_name: serSession.user_name
         }
     })
 
-    return res.send(tutor);
+    return res.send(student);
 })
 
 export default router;
