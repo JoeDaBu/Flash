@@ -11,7 +11,12 @@ export const subjectBadges = {
 };
 
 export const renderSubjectIcon = (subject) => {
-  if (subjectBadges[subject]) throw new Error('No subject found!');
+  let subjectOut;
+  if (typeof subject === 'object') {
+    subjectOut = subjectBadges[Object.values(subject)[0]];
+  } else if (typeof subject === 'string') {
+    subjectOut = subjectBadges[subject];
+  }
 
-  return subjectBadges[Object.values(subject)[0]];
+  return subjectOut;
 };
