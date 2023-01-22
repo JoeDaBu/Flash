@@ -42,7 +42,7 @@ model Course {
   course_id      Int       @unique
   department     String    
   course_number  Int
-  listing        Listing @relation(fields: [listing_id], references: [id])
+  listing        Listing? @relation(fields: [listing_id], references: [id])
   listing_id     Int
   tutorPref_name String
   tutorCom_name  String
