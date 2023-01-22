@@ -1,4 +1,5 @@
 import express from 'express';
+import { course } from '../course/course.js';
 import { getListing } from '../listing.js';
 import { PrismaInstance } from '../utils/prisma.js';   
 
@@ -39,7 +40,16 @@ router.post('/listing', async (req, res) => {
 
     const newListing = await client.listing.create({
         data: {
-            ...req.body
+            title: req.body.title,
+            description: req.body.description,
+            lowest_price: req.body.lowest_price,
+            highest_price: req.body.highest_price,
+            preferred_location: req.body.preferred_location,
+            preferred_time: req.body.preferred_time,
+            fast: req.body.fast,
+            course: {
+                create: req.body.course
+            }
         }
     })
 

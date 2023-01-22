@@ -18,39 +18,41 @@ CREATE TABLE "Tutor" (
     "year_level" INTEGER NOT NULL,
     "gpa" REAL,
     "preferred_meetup" TEXT,
-    "rate" REAL NOT NULL
+    "rate" REAL NOT NULL,
+    "phone_number" INTEGER
 );
 
 -- CreateTable
 CREATE TABLE "Course" (
-    "course_id" INTEGER NOT NULL,
+    "listing_id" TEXT,
+    "tutorPref_name" TEXT,
+    "tutorCom_name" TEXT,
+    "course_id" TEXT NOT NULL PRIMARY KEY,
     "department" TEXT NOT NULL,
     "course_number" INTEGER NOT NULL,
-    "tutorPref_name" TEXT NOT NULL,
-    "tutorCom_name" TEXT NOT NULL,
-    CONSTRAINT "Course_tutorPref_name_fkey" FOREIGN KEY ("tutorPref_name") REFERENCES "Tutor" ("user_name") ON DELETE RESTRICT ON UPDATE CASCADE,
-    CONSTRAINT "Course_tutorCom_name_fkey" FOREIGN KEY ("tutorCom_name") REFERENCES "Tutor" ("user_name") ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT "Course_tutorPref_name_fkey" FOREIGN KEY ("tutorPref_name") REFERENCES "Tutor" ("user_name") ON DELETE SET NULL ON UPDATE CASCADE,
+    CONSTRAINT "Course_tutorCom_name_fkey" FOREIGN KEY ("tutorCom_name") REFERENCES "Tutor" ("user_name") ON DELETE SET NULL ON UPDATE CASCADE,
+    CONSTRAINT "Course_listing_id_fkey" FOREIGN KEY ("listing_id") REFERENCES "Listing" ("id") ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 -- CreateTable
-CREATE TABLE "CourseBadges" (
+CREATE TABLE "CourseBadge" (
+    "course_badge_id" TEXT NOT NULL PRIMARY KEY,
     "subject" TEXT NOT NULL,
-    "verified_by_grades" INTEGER NOT NULL,
     "tutorUser_name" TEXT,
-    CONSTRAINT "CourseBadges_tutorUser_name_fkey" FOREIGN KEY ("tutorUser_name") REFERENCES "Tutor" ("user_name") ON DELETE SET NULL ON UPDATE CASCADE
+    CONSTRAINT "CourseBadge_tutorUser_name_fkey" FOREIGN KEY ("tutorUser_name") REFERENCES "Tutor" ("user_name") ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 -- CreateTable
 CREATE TABLE "Listing" (
-    "listing_id" INTEGER NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "lowest_price" INTEGER NOT NULL,
     "highest_price" INTEGER NOT NULL,
     "preferred_location" TEXT NOT NULL,
     "preferred_time" TEXT NOT NULL,
-    "courseCourse_id" INTEGER NOT NULL,
-    CONSTRAINT "Listing_courseCourse_id_fkey" FOREIGN KEY ("courseCourse_id") REFERENCES "Course" ("course_id") ON DELETE RESTRICT ON UPDATE CASCADE
+    "fast" BOOLEAN NOT NULL
 );
 
 -- CreateIndex
@@ -64,15 +66,3 @@ CREATE UNIQUE INDEX "Tutor_user_name_key" ON "Tutor"("user_name");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Tutor_email_key" ON "Tutor"("email");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Course_course_id_key" ON "Course"("course_id");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Course_department_key" ON "Course"("department");
-
--- CreateIndex
-CREATE UNIQUE INDEX "CourseBadges_subject_key" ON "CourseBadges"("subject");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Listing_listing_id_key" ON "Listing"("listing_id");

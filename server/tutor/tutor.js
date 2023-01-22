@@ -35,14 +35,6 @@ router.put('/tutor', async (req, res) => {
 
 router.post('/tutor', async (req, res) => {
     console.log("Test:\n", req.body)
-    const basePref = req.body.preference
-    const preference = await courseListCreate(basePref, client)
-    const baseComCourses = req.body.completed_courses
-    const completed_courses = await courseListCreate(baseComCourses, client)
-    console.log("Test1:", completed_courses, preference)
-    const baseCourseBadges = req.body.course_badge
-    console.log("Test3:", baseCourseBadges)
-    const course_badge = await courseBadgeListCreate(baseCourseBadges, client)
 
     const newTutor = await client.tutor.create({
         data: {

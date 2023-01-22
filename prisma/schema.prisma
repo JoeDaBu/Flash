@@ -66,6 +66,5 @@ model Listing {
   highest_price      Int
   preferred_location String
   preferred_time     String // unless there's a better way to capture time
-  courseCourse_id    String
   fast               Boolean // indicates if the listing is fast or not
 }
