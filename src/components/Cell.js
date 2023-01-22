@@ -2,6 +2,7 @@ import React from 'react';
 import { Tags } from '../components/Tags';
 import { useModalStore } from '../utils';
 import { Modal } from './Modal';
+import { FastIcon } from '../components/FastIcon.js';
 
 export const Cell = (data) => {
   const modalState = useModalStore((state) => state.showModal);
@@ -16,6 +17,7 @@ export const Cell = (data) => {
             <p className="font-bold">{data ? data.data.title : null}</p>
           </div>
           <div className="my-5 mb-3 inline-flex gap-3">
+          {data.data.fast ? <FastIcon /> : null}
             {/* <Tags isCourse={true} label={data.data} /> */}
             <Tags isCourse={false} label={`$${data.data.lowest_price}/hr`} />
             <Tags isCourse={false} label={data.data.preferred_time} />

@@ -19,6 +19,7 @@ export const Modal = (data) => {
                 {data.data.data.title}
               </p>
               <div className="flex gap-2">
+              {data.data.fast ? <FastIcon /> : null}
                 {/* <Tags isCourse={true} label="MATH 103" /> */}
                 <Tags
                   isCourse={false}

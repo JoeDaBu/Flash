@@ -62,9 +62,9 @@ export const Quicklook = () => {
         </div>
         <div className="flex flex-col gap-2">
           <p className="font-extrabold">Upcoming Sessions</p>
-          <Cell />
-          <Cell />
-          <Cell />
+          <Cell label="MATH 318 w/ Eddie" when="1h" fast={true} />
+          <Cell label="CPSC 320 w/ Joe" when="4h" fast={true} />
+          <Cell label="MATH 341 w/ Brian" when="Feb 4" fast={false} />
         </div>
         <div className="flex flex-col gap-1">
           <p className="font-extrabold">Completed Sessions</p>

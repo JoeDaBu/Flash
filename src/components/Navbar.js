@@ -5,7 +5,7 @@ import { FaSearch } from 'react-icons/fa';
 
 export const Navbar = () => {
     return (
-        <div className="flex items-center justify-between mt-8 mb-12">
+        <div className="flex items-center justify-between mt-6 mb-12">
             <Link to="/">
                 <img className="w-12 h-auto" src={Logo} alt="Logo" />
             </Link>

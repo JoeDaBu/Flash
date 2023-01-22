@@ -23,7 +23,7 @@ router.get('/tutor', async (req, res) => {
 router.put('/tutor', async (req, res) => {
   const tutor = await client.tutor.update({
     where: {
-      user_name: 'EdwardBu1234',
+      user_name: 'doeunkwon',
     },
     data: {
       ...req.body,
