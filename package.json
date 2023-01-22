@@ -38,20 +38,8 @@
       "last 1 safari version"
     ]
   },
-  "description": "NWPlus Hackathon",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JoeDaBu/flash.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/JoeDaBu/flash/issues"
-  },
-  "homepage": "https://github.com/JoeDaBu/flash#readme",
   "devDependencies": {
-    "prisma": "^4.9.0"
+    "prisma": "^4.9.0",
+    "tailwindcss": "^3.2.4"
   }
 }
