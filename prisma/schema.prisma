@@ -64,4 +64,5 @@ model Listing {
   preferred_location String
   preferred_time     String // unless there's a better way to capture time
   courseCourse_id    Int
+  fast               Boolean // indicates if the listing is fast or not
 }
