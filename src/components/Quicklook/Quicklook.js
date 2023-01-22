@@ -16,7 +16,7 @@ export const Quicklook = () => {
           <Link to="/profile">
             <ProfileIcon />
           </Link>
-          <p className="font-bold text-primary-900">John Doe</p>
+          <p className="font-bold text-primary-900 text-xl">John Doe</p>
           <div className="flex gap-4">
             {renderBadges()}
             {renderBadges()}
@@ -37,7 +37,7 @@ export const Quicklook = () => {
             <p>Grade Point Average (GPA):</p>
           </div>
         </div>
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-2">
           <p className="font-extrabold">Upcoming Sessions</p>
           <Cell />
           <Cell />

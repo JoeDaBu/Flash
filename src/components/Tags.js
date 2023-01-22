@@ -2,7 +2,6 @@ import React from 'react';
 import { renderIcon } from '../utils';
 
 export const Tags = ({isCourse, label}) => {
-  console.log(`Label: ${label}`)
   if (isCourse) {
     // const course = toString(label).split(" ")[0]
     // console.log(course)
