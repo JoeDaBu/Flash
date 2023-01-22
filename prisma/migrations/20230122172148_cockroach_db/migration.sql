@@ -5,7 +5,7 @@ CREATE TABLE "Student" (
     "last_name" STRING NOT NULL,
     "email" STRING NOT NULL,
     "password" STRING NOT NULL,
-    "phone_number" INT4
+    "phone_number" STRING
 );
 
 -- CreateTable
@@ -19,7 +19,7 @@ CREATE TABLE "Tutor" (
     "gpa" FLOAT8,
     "preferred_meetup" STRING,
     "rate" FLOAT8 NOT NULL,
-    "phone_number" INT4
+    "phone_number" STRING
 );
 
 -- CreateTable

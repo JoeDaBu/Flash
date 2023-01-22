@@ -3,7 +3,7 @@ import { Tags } from '../components/Tags';
 import { useModalStore } from '../utils';
 import { Modal } from './Modal';
 
-export const Cell = () => {
+export const Cell = (data) => {
   const modalState = useModalStore((state) => state.showModal);
   const changeState = useModalStore((state) => state.toggleModal);
 
