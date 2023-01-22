@@ -11,7 +11,9 @@ const client = prismaInstance.getInstance();
 const router = express.Router();
 
 router.get('/listing', async (req, res) => {
-  const listing = await client.listing.findMany();
+  const listing = await client.listing.findMany({
+    include: { course: true },
+  });
 
   return res.send(listing);
 });
