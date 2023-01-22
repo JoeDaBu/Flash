@@ -18,7 +18,7 @@ router.get('/tutor', async (req, res) => {
         }
     })
 
-    return res.send(tutor)
+    return res.send(tutor);
 })
 
 router.put('/tutor', async (req, res) => {
