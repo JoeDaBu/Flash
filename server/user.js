@@ -1,4 +1,4 @@
-import { Request } from 'express';
+// import { Request } from 'express';
 export const getUser = (req) => {
     if (req.session.user) {
     return req.session.user;

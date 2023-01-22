@@ -1,20 +1,19 @@
 import express from 'express';
-import session from 'express-session';
 import cors from 'cors';
-import listingRoute from './listing/listing'
-import studentRoute from './student/student'
-import tutorRoute from './tutor/tutor'
+import listingRoute from './listing/listing.js'
+import studentRoute from './student/student.js'
+import tutorRoute from './tutor/tutor.js'
 
 const app = express();
 const PORT = 1234;
 
-app.use(
-    session({
-        secret: 'secret',
-        resave: false,
-        savedUninitialized: false
-    })
-)
+// app.use(
+//     session({
+//         secret: 'secret',
+//         resave: false,
+//         savedUninitialized: false
+//     })
+// )
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 

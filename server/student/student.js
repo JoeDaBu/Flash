@@ -1,6 +1,6 @@
 import express from 'express';
-import { getUser } from '../user';
-import { PrismaInstance } from '../utils/prisma';
+import { getUser } from '../user.js';
+import { PrismaInstance } from '../utils/prisma.js';
 
 const prismaInstance = new PrismaInstance();
 prismaInstance.createInstance();
