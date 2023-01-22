@@ -4,6 +4,7 @@ import { HiLanguage, HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { AiOutlineDollar } from 'react-icons/ai';
 import { FiClock } from 'react-icons/fi';
+import { MdOutlineBiotech } from 'react-icons/md';
 
 import { create } from 'zustand';
 
@@ -14,6 +15,7 @@ export const icons = {
     PHIL: <TfiThought />,
     ENGL: <HiLanguage />,
     ENG: <HiOutlineWrenchScrewdriver />,
+    BIOL: <MdOutlineBiotech />,
   },
   location: <HiOutlineLocationMarker />,
   rate: <AiOutlineDollar />,
