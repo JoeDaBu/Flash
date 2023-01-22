@@ -2,6 +2,7 @@ import React from 'react';
 import { Badge } from '../Badge';
 import { ProfileIcon } from '../ProfileIcon';
 import { Cell } from './Cell';
+import { Link } from 'react-router-dom';
 
 export const Quicklook = () => {
   const renderBadges = () => {
@@ -9,10 +10,12 @@ export const Quicklook = () => {
   };
 
   return (
-    <div className="flex flex-col bg-white shadow-lg ml-auto mr-0 rounded-lg w-1/4 h-max">
+    <div className="flex shrink-0 bg-white shadow-lg ml-auto mr-0 rounded-lg w-max h-max">
       <div className="flex flex-col mx-5 gap-4 py-5">
         <div className="flex flex-col justify-center items-center gap-1">
-          <ProfileIcon />
+          <Link to="/profile">
+            <ProfileIcon />
+          </Link>
           <p className="font-bold text-primary-900">John Doe</p>
           <div className="flex gap-4">
             {renderBadges()}
