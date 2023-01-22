@@ -34,4 +34,22 @@ router.put('/listing', async (req, res) => {
     return res.send(listing);
 })
 
+router.post('/create_listing', async (req, res) => {
+    const response = createUserValidator.safeParse({
+        ...req.body
+    })
+
+    if (!response.success) {
+        return res.status(400).send(response.error);
+    }
+
+    const newListing = await client.listing.create({
+        data: {
+            ...data
+        }
+    })
+
+    return res.send(newListing);
+})
+
 export default router;
