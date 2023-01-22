@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Tags } from '../components/Tags';
 
 export const Cell = () => {
+    const [showModal, setShowModal] = useState(false);
     return (
         <div>
             <div className="flex-col bg-primary-100 w-full rounded-xl pb-5">
